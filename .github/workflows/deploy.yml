@@ -33,5 +33,5 @@ jobs:
           git config --global user.name "Prathamesh Khade"
 
           git add .
-    git commit -m "Deploy new version"
-    git push
+          git commit -m "Deploy new version"
+          git push
