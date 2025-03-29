@@ -1,4 +1,4 @@
-#import libraries 
+# Import libraries 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from transformers import pipeline
@@ -8,7 +8,10 @@ import uvicorn
 app = FastAPI()
 
 # Load the Hugging Face question-answering model
-qa_pipeline = pipeline("question-answering", model="distilbert-base-uncased-distilled-squad")
+try:
+    qa_pipeline = pipeline("question-answering", model="distilbert-base-uncased-distilled-squad", from_pt=True)
+except Exception as e:
+    raise RuntimeError(f"Error loading model: {e}")
 
 # Define request and response models
 class ChatRequest(BaseModel):
