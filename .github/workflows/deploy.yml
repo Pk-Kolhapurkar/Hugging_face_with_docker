@@ -27,6 +27,11 @@ jobs:
           mv fastapi-chatbot hf_space
           rsync -av --exclude=hf_space --exclude=.git ./ hf_space/
           cd hf_space
+
+          # Set Git User Identity
+          git config --global user.email "no-reply@github.com"
+          git config --global user.name "Prathamesh Khade"
+
           git add .
-          git commit -m "Deploy new version"
-          git push
+    git commit -m "Deploy new version"
+    git push
