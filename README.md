@@ -1,7 +1,9 @@
-title: Fastapi Chatbot
-emoji: 📚
-colorFrom: pink
-colorTo: indigo
+---
+title: FastAPI Chatbot
+emoji: 🤖
+colorFrom: blue
+colorTo: green
 sdk: docker
+app_file: app/main.py
 pinned: false
-short_description: project
+---
