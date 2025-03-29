@@ -4,6 +4,6 @@ emoji: 🤖
 colorFrom: blue
 colorTo: green
 sdk: docker
-app_file: app/main.py
+app_file: app/app.py
 pinned: false
 ---
