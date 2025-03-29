@@ -22,8 +22,10 @@ jobs:
         run: huggingface-cli login --token "$HF_TOKEN"
 
       - name: Clone Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git clone https://huggingface.co/spaces/Prathamesh1420/fastapi-chatbot
+          git clone https://user:$HF_TOKEN@huggingface.co/spaces/Prathamesh1420/fastapi-chatbot
           mv fastapi-chatbot hf_space
           rsync -av --exclude=hf_space --exclude=.git ./ hf_space/
           cd hf_space
