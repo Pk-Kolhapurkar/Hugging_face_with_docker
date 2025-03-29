@@ -1,0 +1,31 @@
+name: Deploy FastAPI to Hugging Face Spaces
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Hugging Face CLI
+        run: pip install huggingface_hub
+
+      - name: Authenticate with Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: huggingface-cli login --token "$HF_TOKEN"
+
+      - name: Push to Hugging Face Space
+        run: |
+          git clone https://huggingface.co/spaces/Prathamesh1420/fastapi-chatbot
+          cd fastapi-chatbot
+          cp -r ../* .
+          git add .
+          git commit -m "Deploy new version"
+          git push
